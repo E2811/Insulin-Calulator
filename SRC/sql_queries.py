@@ -39,6 +39,14 @@ def getDataUser(user_id):
     df= pd.read_sql_query(query, engine)
     return df
 
+def proveUser(username, password):
+    ''' Prove that the password is correct ''' 
+    query = """
+        SELECT user_id FROM user WHERE username='{}' and password='{}'
+    """.format(username, password)
+    user_id = connection.execute(query).fetchone()
+    return user_id
+
 def getDataFoto(foto_id):
     ''' Get information from foto ''' 
     query = """
@@ -55,4 +63,3 @@ def getDataCalculo(foto_id):
     df= pd.read_sql_query(query, engine)
     return df
 
-print(getDataFoto(1))
