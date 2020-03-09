@@ -1,26 +1,27 @@
 from flask import Flask, request, render_template
+import sql_queries as S
 import os
 
 
-app = Flask(__name__, static_folder='./templates/css')
-
-#@error_handler
-@app.route("/user/create/<username>", methods=['GET'])
-def create_user(username):
-    return U.createUser(username) 
+app = Flask(__name__, static_folder='./templates/')
 
 @app.route('/')
 def showmain():
     return render_template('index.html')
 
-@app.route('/showSignUp')
-def showSignUp():
-    return render_template('signup.html')
-
-@app.route('/signUp',methods=['GET'])
+@app.route('/signUp',methods=['GET','POST'])
 def signUp():
-    # create user code will be here !!
-    return 'hi'
+    ''' Create new user '''
+    if request.method == "POST":
+        data = request.form
+        username = data['username']
+        password = data['password']
+        weight = data['weight']
+        print(username)
+        if data.get('username', None) is not None and data.get('password', 
+            None) and data.get('weight', None) is not None:
+            S.adduser(username,password,weight)
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug='True')

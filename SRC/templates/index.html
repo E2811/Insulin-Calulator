@@ -8,43 +8,62 @@
   <body>
  
     <div class="container">
-      <div class="header">
-        <h3 class="text-muted">Insulin controler</h3>
-      </div>
- 
-      <div class="jumbotron">
-        <h1>Diabetes App</h1>
-        <div class="form-structor">
-          <div class="signup">
-            <h2 class="form-title" id="signup"><span>or</span>Sign up</h2>
-            <div class="form-holder">
-              <input type="username" class="input" placeholder="username" />
-              <input type="password" class="input" placeholder="Password" />
-              <input type="weight" class="input" placeholder="weight" />
-            </div>
-            <button class="submit-btn">Sign up</button>
+      <div class="overlay">
+
+        <form>
+        
+           <div class="con">
+           <header class="head-form">
+              <h2>Diabetes App</h2>
+              <p>login here using your username and password</p>
+           </header>
+           <br>
+           <div class="field-set">
+             
+              <!--   user name -->
+                 <span class="input-item">
+                   <i class="fa fa-user-circle"></i>
+                 </span>
+                <!--   user name Input-->
+                 <input class="form-input" id="txt-input" type="text" placeholder="username" required>
+             
+              <br>
+                   <!--   Password -->
+             
+              <span class="input-item">
+                <i class="fa fa-key"></i>
+               </span>
+              <!--   Password Input-->
+              <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
+             
+        <!--      Show/hide password  -->
+             <span>
+                <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
+             </span>
+             
+             
+              <br>
+        <!--        buttons -->
+        <!--      button LogIn -->
+              <button class="log-in"> Log In </button>
+           </div>
+        <!--   other buttons -->
+           <div class="other">
+        <!--      Forgot Password button-->
+              <button class="btn submits frgt-pass">Forgot Password</button>
+        <!--     Sign Up button -->
+              <button class="btn submits sign-up">Sign Up 
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+              </button>
+           </div>
           </div>
-          <div class="login slide-up">
-            <div class="center">
-              <h2 class="form-title" id="login"><span>or</span>Log in</h2>
-              <div class="form-holder">
-                <input type="username" class="input" placeholder="username" />
-                <input type="password" class="input" placeholder="Password" />
-              </div>
-              <button class="submit-btn">Log in</button>
-            </div>
-          </div>
+        </form>
         </div>
-      </div>
  
-       
-  <section>
-    <script src="js//main.js"></script>
-  </section>
+    <script src="js/main.js"></script>
       <footer class="footer">
         <p>&copy; ironhack2020</p>
       </footer>
- 
     </div>
   </body>
 </html>

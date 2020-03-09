@@ -8,7 +8,7 @@ def food_prediction(image_path):
     ''' Recognice the food in a given image ''' 
 
     # load model 
-
+    
     model_json = open('output/model.json', 'r')
     loaded_model = model_json.read()
     model_json.close()
