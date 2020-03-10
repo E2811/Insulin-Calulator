@@ -23,7 +23,7 @@ def create_model(model_path='output/model.h5'):
     filenames = sorted(os.listdir(os.path.join(path,"united")))
     for file in filenames:
         print(os.path.join(path,"united",file))
-        img = img = cv2.resize(cv2.cvtColor(cv2.imread(os.path.join(path,"united",file)), cv2.COLOR_BGR2RGB), (224, 224))
+        img = cv2.resize(cv2.cvtColor(cv2.imread(os.path.join(path,"united",file)), cv2.COLOR_BGR2RGB), (224, 224))
         X.append(img.astype(np.float32))
     X = np.array(X)
 

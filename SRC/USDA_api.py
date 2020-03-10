@@ -29,15 +29,14 @@ def search_food_USDA(query, sort='r'):
 
 #print(search_food_USDA("pizza")['foods'][0]['fdcId'])
 
-def get_CHO_food(food_id):
+def get_CHO_food(prediction):
 
     ''' Make a request to USDA API and return the respective carbohydrates  '''
     api_key = authotization()
+    food_id= search_food_USDA(prediction)
     search_dict = {
         "api_key":api_key,
     }
     endopoint = f'https://api.nal.usda.gov/fdc/v1/{food_id}/?'
     res = requests.get(endopoint,search_dict).json()
     return res['labelNutrients']['carbohydrates']
-
-print(get_CHO_food(search_food_USDA('vegetables')))

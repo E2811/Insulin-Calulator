@@ -25,8 +25,8 @@ document.getElementById("eye").addEventListener("click", function () {
 }, false);
 
 $(function() {
-    $('#btnlog-in').click(function() {
- 
+    $('#btnlog-in').click(function(e) {
+        e.preventDefault()
         $.ajax({
             url: '/signUp',
             data: $('form').serialize(),

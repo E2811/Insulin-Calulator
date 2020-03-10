@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Diabetes App</title>
+    <link href="css/style.css" rel="stylesheet"  type="text/css">  
+  </head>
+ 
+  <body>
+ 
+    <div class="container">
+        <div class="overlay">
+
+            <form method="POST" action="/signUp">
+        
+                <div class="con">
+                    <header class="head-form">
+                       <h2>Diabetes App</h2>
+                       <p>Enter your details</p>
+                    </header>
+                    
+                </div>
+            
+                <div class="field-set">
+                  <div class="inputs-wrapper">
+
+                      <input class="form-input" id="txt-input" type="text" placeholder="username" name="username" required>
+                   
+                   <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
+
+                   <input class="form-input" id="weight-input" type="text" placeholder="Weight" name="weight" required>
+                 </div>
+                </div>
+              
+              
+                <div class="other">
+                   <button id="btnlog-in" class="sign-up"> Sign Up </button>
+                
+                   <button class="btn submits frgt-pass">Forgot Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+ 
+    <script src="js/main.js"></script>
+      <footer class="footer">
+        <p>&copy; ironhack2020</p>
+      </footer>
+    </div>
+  </body>
+</html>
