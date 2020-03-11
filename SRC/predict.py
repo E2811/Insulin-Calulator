@@ -23,7 +23,7 @@ def food_prediction(image_path):
     # predict
 
     pred = model.predict(np.expand_dims(np_image,axis=0))[0]
-    classses = ['cheese','egg','fruit&veggies','hamburguer','meat','pasta','pizza','rice']
+    classses = ['cheese','egg','vegetables','hamburger','meat','pasta','pizza','rice']
 
     print(f'Probability: {max(pred)}--> {classses[np.argmax(pred)]}')
-    return classses[np.argmax(pred)], np_image
+    return classses[np.argmax(pred)]

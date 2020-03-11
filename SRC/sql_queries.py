@@ -26,7 +26,7 @@ def addfood(user_id, path, prediction):
 
 def adddose(foto_id, carbohydrates, dose):
     ''' Insert dose needed '''
-    query = """INSERT INTO calculo (carbohydrates, dose, fotos_fotos_id, create_time) 
+    query = """INSERT INTO calculo (carbohydrates, dose, fotos_foto_id, create_time) 
         VALUES ('{}','{}','{}',CURRENT_TIMESTAMP);""".format(carbohydrates,dose, foto_id)
     connection.execute(query) 
     return "everything OK"
@@ -63,3 +63,11 @@ def getDataCalculo(foto_id):
     df= pd.read_sql_query(query, engine)
     return df
 
+def getdatatime(user_id):
+    df = pd.read_sql_query("""
+    SELECT calculo.dose as dose, calculo.create_time as time
+    FROM diabetes.calculo as calculo
+    INNER JOIN diabetes.fotos as foto ON calculo.fotos_foto_id=foto.foto_id
+    WHERE foto.user_user_id='{}';
+    """.format(user_id), engine)
+    return df

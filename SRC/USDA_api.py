@@ -27,7 +27,6 @@ def search_food_USDA(query, sort='r'):
     id = res.json()
     return id['foods'][0]['fdcId']
 
-#print(search_food_USDA("pizza")['foods'][0]['fdcId'])
 
 def get_CHO_food(prediction):
 

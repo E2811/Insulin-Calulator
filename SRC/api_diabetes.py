@@ -19,14 +19,13 @@ def logIn():
         data = request.form
         username = data["username"]
         password = data["password"]
-        app.secret_key = 'esto-es-una-clave-muy-secreta'
+        app.secret_key = os.urandom(24)
         user_id = S.proveUser(username, password)[0]
         session['user_id'] = user_id
         if not user_id:
             return json.dumps({'html':'<span>Incorrect password</span>'})
         else:
             return redirect(url_for('upload_file'))
-            #json.dumps({'user_id':user_id})
     return render_template('index.html')
 
 @app.route('/signUp',methods=['GET','POST'])
@@ -40,15 +39,21 @@ def signUp():
         if data.get('username', None) is not None and data.get('password', 
             None) and data.get('weight', None) is not None:
             S.adduser(username,password,weight)
+            return json.dumps({'html':'<span>New user created</span>'})
         else:
             return json.dumps({'html':'<span>Enter the required fields</span>'})
         
     return render_template('signup.html')
 
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+@app.route('/graphs',methods=['GET'])
+def line_chart():
+    user_id=1
+    #user_id = session['user_id']
+    df = S.getdatatime(user_id)
+    labels = df['time'].to_list()
+    values = df['dose'].astype(int).to_list()
+    print(labels)
+    return render_template('chart.html',values=values, labels=labels)
 
 @app.route('/fileUpload',methods=['GET','POST'])
 def upload_file():
@@ -67,14 +72,12 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             user_id = session['user_id']
-            print(user_id)
             prediction = food_prediction(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             carbohydrates = get_CHO_food(prediction)['value']
             dose = insulin_calculator(carbohydrates, int(user_id))
-            foto_id = S.addfoto(int(user_id),os.path.join(app.config['UPLOAD_FOLDER'], filename),prediction)[0]
+            foto_id = S.addfood(int(user_id),os.path.join(app.config['UPLOAD_FOLDER'], filename),prediction)
             S.adddose(foto_id,carbohydrates, dose)
-            return json.dumps({'dose':dose})
-        #return redirect(url_for('uploaded_file',filename=filename))
+            return render_template('dose.html',dose=dose)
     return render_template('fileupload.html')
 
 if __name__ == "__main__":
