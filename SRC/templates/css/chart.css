@@ -12,3 +12,7 @@ h1 {
     margin-left: calc(70% + 100px);
     margin-bottom: 20px;
 }
+figure {
+    margin-left: calc(50% - 400px);
+    width: 800px;
+}
