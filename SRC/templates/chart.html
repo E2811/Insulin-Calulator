@@ -3,11 +3,12 @@
   <head>
     <title>Diabetes App</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300&display=swap" rel="stylesheet">
-    <link href="css/chart.css" rel="stylesheet"  type="text/css">  
+    <link href="{{ url_for('static',filename='css/chart.css') }}" rel="stylesheet" type="text/css">
   </head>
  
   <body>
-      <h1>Diabetes App</h1>
+    <h1>Diabetes App</h1>
+    <img class="insulin" src="{{ url_for('static',filename='img/diabetes.jpg') }}" alt="insulin">
       <figure> 
           <div class="chartsjs-size-monitor"></div>
           <canvas id="bar-chart" width="800" height="450"></canvas>
@@ -31,7 +32,7 @@
             options: {
               title: {
                 display: true,
-                text: 'Insulin doses'
+                text: 'INSULIN DOSE GRAPH'
               }
             }
           });</script>

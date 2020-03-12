@@ -71,3 +71,11 @@ def getdatatime(user_id):
     WHERE foto.user_user_id='{}';
     """.format(user_id), engine)
     return df
+
+def getUserid(username):
+    ''' Prove that the password is correct ''' 
+    query = """
+        SELECT user_id FROM user WHERE username='{}' 
+    """.format(username)
+    user_id = connection.execute(query).fetchone()
+    return user_id

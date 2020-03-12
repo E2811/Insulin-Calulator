@@ -42,17 +42,15 @@ def signUp():
             return json.dumps({'html':'<span>New user created</span>'})
         else:
             return json.dumps({'html':'<span>Enter the required fields</span>'})
-        
     return render_template('signup.html')
 
-@app.route('/graphs',methods=['GET'])
-def line_chart():
-    user_id=1
-    #user_id = session['user_id']
+@app.route('/graphs/<username>',methods=['GET'])
+def line_chart(username):
+    ''' Get a graph of the doses recommended per time ''' 
+    user_id = S.getUserid(username)[0]
     df = S.getdatatime(user_id)
     labels = df['time'].to_list()
     values = df['dose'].astype(int).to_list()
-    print(labels)
     return render_template('chart.html',values=values, labels=labels)
 
 @app.route('/fileUpload',methods=['GET','POST'])
