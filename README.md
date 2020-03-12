@@ -2,7 +2,7 @@
 ## Objective
 Create an api for people with diabetes. The functionality implies:
 - The user takes a picture of each meal 
-- the meal is recognized -- Convolutional neural network (CNN) (to startwith only usefull for pasta, pizza, egg, cheese, hamburguer, rice and vegetables)
+- the meal is recognized -- Convolutional neural network (CNN) (to startwith only usefull for pasta, pizza, egg, cheese, hamburger, meat, rice and vegetables)
 - The CHO is calculated -- Using USDA api
 - The recommended dose of insulin is calculated  
 ### Model of neural network 
