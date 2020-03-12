@@ -20,11 +20,11 @@ def logIn():
         username = data["username"]
         password = data["password"]
         app.secret_key = os.urandom(24)
-        user_id = S.proveUser(username, password)[0]
-        session['user_id'] = user_id
+        user_id = S.proveUser(username, password)
         if not user_id:
             return json.dumps({'html':'<span>Incorrect password</span>'})
         else:
+            session['user_id'] = user_id[0]
             return redirect(url_for('upload_file'))
     return render_template('index.html')
 

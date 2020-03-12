@@ -11,6 +11,6 @@ h1 {
     margin-left: calc(50% - 100px);
     margin-bottom: 80px;
 }
-section {
-    text-align: center;
+h2 {
+    text-align:center;
 }
